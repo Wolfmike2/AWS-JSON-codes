@@ -1,0 +1,53 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Resource": "*",
+            "Action": [
+                "ec2:*",
+                "iam:ListUsers",
+                "iam:ListRoles",
+                "iam:ListGroups",
+                "iam:GetRolePolicy",
+                "iam:GetPolicy",
+                "iam:ListUserPolicies",
+                "iam:GetUser",
+                "iam:ListAttachedUserPolicies",
+                "iam:ListGroupsForUser",
+                "iam:ListPolicies",
+                "iam:GetPolicyVersion",
+                "iam:ListAccessKeys",
+                "iam:ListSSHPublicKeys",
+                "iam:ListServiceSpecificCredentials",
+                "iam:ListMFADevices",
+                "iam:GetLoginProfile",
+                "iam:ListSigningCertificates",
+                "iam:GetAccessKeyLastUsed",
+                "iam:ListPolicyVersions"
+            ],
+            "Effect": "Allow"
+        },
+        {
+            "Resource": "arn:aws:ec2:*:*:instance/*",
+            "Action": [
+                "ec2:RunInstances"
+            ],
+            "Effect": "Deny"
+        },
+        {
+            "Resource": "*",
+            "Action": [
+                "ec2:*Spot*",
+                "ec2:*ReservedInstances*"
+            ],
+            "Effect": "Deny"
+        },
+        {
+            "Resource": "arn:aws:ec2:*:*:instance/*",
+            "Action": [
+                "ec2:StartInstances"
+            ],
+            "Effect": "Deny"
+        }
+    ]
+}
